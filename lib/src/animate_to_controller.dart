@@ -15,6 +15,13 @@ class AnimateToController {
     return _generatedKeys[tag] ??= GlobalKey<AnimateFromState>();
   }
 
+  /// Add an existing [GlobalKey] from to the list of _generatedKeys
+  void tagWithKey(Object tag, GlobalKey<AnimateFromState> key) {
+    if (_generatedKeys.containsKey(tag)) return;
+
+    _generatedKeys[tag] = key;
+  }
+
   /// Triggers the animation from the [AnimateFrom] widget by key.
   void animate(
     GlobalKey<AnimateFromState> key, {
